@@ -1,10 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class Tales():
-    title = models.TextField(50)
-    author = models.TextField (100)
-    genre = models.TextField(50)
+class Tales(models.Model):
+    title = models.TextField()
+    author = models.TextField ()
+    genre = models.TextField()
     date_created = models.DateTimeField()
-    content = models.TextField(2000)
+    content = models.TextField()
 
