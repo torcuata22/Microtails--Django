@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'profiles',
     'liked',
     'group_projects',
+    'pages', 
 ]
 
 MIDDLEWARE = [
