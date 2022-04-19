@@ -3,21 +3,20 @@ from django.shortcuts import render
 
 # Create your views here.
 def home_view(request,*args, **kwargs):
-    return HttpResponse("<h1> Welcome to Microtales!</h1> <br> Would you like to register or login?")
+    return render(request, "home.html", {} )
 
 
 def about_view(request,*args, **kwargs):
-    return HttpResponse("<h1> What is Microtales?</h1>")
+    return render(request, "about.html", {} )
 
 def login_view(request,*args, **kwargs):
-    return HttpResponse("<h1> Login to your account</h1>")
+    return render(request, "login.html", {} )
 
 def register_view(request,*args, **kwargs):
-    return HttpResponse("<h1> First time here? Register for a free account</h1>")
-
+    return render(request, "register.html", {} )
 def write_view(request,*args, **kwargs):
-    return HttpResponse("<h1> Start creating</h1>")
+    return render(request, "write.html", {} )
 
 def read_view(request,*args, **kwargs):
-    return HttpResponse("<h1> These are today's featured tales</h1>")
+    return render(request, "read.html", {} )
 
