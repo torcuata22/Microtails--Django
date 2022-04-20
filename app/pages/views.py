@@ -1,12 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
+
 # Create your views here.
 def home_view(request,*args, **kwargs):
-    return render(request, "home.html", {} )
-
+    context={
+        "welcome": "welcome to Microtails!"
+    }
+    return render(request, "home.html", context)
 def about_view(request,*args, **kwargs):
-    return render(request, "about.html", {} )
+    return render(request, "about.html", {})
 
 def login_view(request,*args, **kwargs):
     return render(request, "login.html", {} )
@@ -20,6 +24,8 @@ def write_view(request,*args, **kwargs):
 def read_view(request,*args, **kwargs):
     return render(request, "read.html", {} )
 
-def read_faq(request, *args, **kwargs):
+def faq_view(request, *args, **kwargs):
     return render (request, "faq.html", {})
+
+
     
