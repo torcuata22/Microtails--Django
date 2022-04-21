@@ -6,13 +6,14 @@ from .forms import TalesForm
 def tale_create_view(request):
     form = TalesForm(request.POST or None)
     if form.is_valid():
-        form.save
+        form.save()
+        form = TalesForm()
 
     context={
         'form': form
     }
 
-    return render (request, 'tales/tale_create.html', context)
+    return render (request, 'write.html', context)
 
 def tale_detail_view(request):
     obj=Tales.objects.get(id=15)
@@ -21,7 +22,6 @@ def tale_detail_view(request):
         'title': obj.title,
         'author': obj.author,
         'genre': obj.genre,
-        'date_created': obj.date_created,
         'content': obj.content
     }
 

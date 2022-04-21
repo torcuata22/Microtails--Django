@@ -1,11 +1,12 @@
-
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>Have an idea? Create a new Tail</h1>
+<h1>Hsve sn idea? Create a new Tail</h1>
 <form method="POST"> {% csrf_token %}
 {{ form.as_p }}
+  
 <button>Save</button>
+
 </form>
 {{ content }}
 

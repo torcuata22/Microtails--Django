@@ -7,5 +7,6 @@ class TalesForm(forms.ModelForm):
         fields = [
           'title',
           'author',
-          'content'  
+          'genre',
+          'content', 
         ]

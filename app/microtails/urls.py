@@ -28,6 +28,6 @@ urlpatterns = [
     path('read/', read_view, name='read our tales' ),
     path('faq/', faq_view, name='faq' ),
     path('tales/details.html', tale_detail_view, name='tale'),
-     path('tales/tale_create.html', tale_create_view, name='create tale'),
+    path('tales/write.html', tale_create_view, name='create tale'),
     path('admin/', admin.site.urls),
 ]
