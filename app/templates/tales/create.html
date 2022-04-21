@@ -2,14 +2,12 @@
 
 {% block content %}
 <h1>Have an idea? Create a new Tail</h1>
-<form method="POST">  {% csrf_token %}
+<form method="POST">  
+{% csrf_token %}
 {{ form.as_p }}
+{{ content }} 
 <button>Save</button>
-
 </form> 
 
 
 {% endblock %}
-
-
-
