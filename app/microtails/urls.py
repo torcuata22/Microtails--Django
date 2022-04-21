@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home_view, about_view, login_view, register_view, write_view, read_view, faq_view
-from tales.views import tale_detail_view
+from tales.views import tale_detail_view, tale_create_view
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('read/', read_view, name='read our tales' ),
     path('faq/', faq_view, name='faq' ),
     path('tales/details.html', tale_detail_view, name='tale'),
+     path('tales/tale_create.html', tale_create_view, name='create tale'),
     path('admin/', admin.site.urls),
 ]
