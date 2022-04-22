@@ -1,40 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Tales
 from .forms import TalesForm, RawTaleForm
 
 # Create your views here.
 
-def tale_create_view(request):
-    my_form = RawTaleForm()
+def tale_lookup_view(request, tale_id):
+    #obj = Tales.objects.get(id= tale_id)
+    obj = get_object_or_404(Tales, id = tale_id)
+    context = {
+        'object': obj
+    }
+
+    return render (request, 'tales/details.html', context)
+
+def tale_delete_view (request, tale_id):
+    obj = get_object_or_404 (Tales, id = tale_id)
     if request.method == "POST":
-        my_form = RawTaleForm(request.POST)
-        if my_form.is_valid():
-            #now the data is good
-            print(my_form.cleaned_data)
-            Tales.objects.create(title= my_form.cleaned_data)
-        else:
-            print(my_form.errors)
-    context={
-            "form":my_form
-         }
-    return render (request, 'write.html', context)
+        obj.delete()
+        return redirect('../../../')
+    context = { "object": obj}
 
-# def tale_create_view(request):
+    return render (request, 'tales/tale_delete.html', context)
+
+
+
+# def render_initial_data(request):
+#     initial_data = {
+#         'title':'Your Title',
+#         'author': 'Your name',
+#         'genre' : 'What genre is your story?',
+#         'content': 'Write your story!' 
+
+#     }
 #     form = TalesForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         form = TalesForm()
-
-#     context={
+#     context = {
 #         'form': form
 #     }
-
 #     return render (request, 'write.html', context)
 
 
-def tale_detail_view(request):
-    obj=Tales.objects.get(id=15)
-    #Long way around, but works:
+def tale_create_view(request):
+    my_form = TalesForm(request.POST or None)
+    if my_form.is_valid():
+        my_form.save()
+        my_form = TalesForm()
+
+    context={
+        'form': my_form
+    }
+
+    return render (request, 'write.html', context)
+
+
+def tale_detail_view(request, id):
+    obj=Tales.objects.get(id)
     context={
         'title': obj.title,
         'author': obj.author,
@@ -47,3 +66,23 @@ def tale_detail_view(request):
     #     'object':obj
     # }
     return render(request, 'tales/details.html', context )
+
+
+
+
+
+
+# def tale_create_view(request):
+#     my_form = RawTaleForm()
+#     if request.method == "POST":
+#         my_form = RawTaleForm(request.POST)
+#         if my_form.is_valid():
+#             #now the data is good
+#             print(my_form.cleaned_data)
+#             Tales.objects.create(title= my_form.cleaned_data)
+#         else:
+#             print(my_form.errors)
+#     context={
+#             "form":my_form
+#          }
+#     return render (request, 'write.html', context)
