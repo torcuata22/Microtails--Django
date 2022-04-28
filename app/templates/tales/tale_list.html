@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for instance in tale_list %}
+<p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}/'> Title: {{ instance.title }}</a></p>
+<p> Author: {{ instance.author }}</p>
+<p>Genre: {{ instance.genre }}</p>
+<p> {{ instance.content }} </p>
+    
+
+{% endfor %}
+
+{% endblock %}
+
+

@@ -14,13 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include,path
 from pages.views import home_view, about_view, login_view, register_view, write_view, read_view, faq_view
-from tales.views import tale_detail_view, tale_create_view, tale_lookup_view, tale_delete_view
+from tales.views import tale_detail_view, tale_create_view, tale_lookup_view, tale_delete_view, tale_list_view
 
 urlpatterns = [
-    path('tales/<int:tale_id>/', tale_lookup_view, name='tale'),
-    path('tales/<int:tale_id>/tale_delete', tale_delete_view, name="delete-tale"),
+    path('tales/', include('tales.urls')),
     path('', home_view, name='home'),
     path('home/', home_view, name='home'),
     path('about/', about_view, name='about'),
@@ -29,7 +28,5 @@ urlpatterns = [
     path('write/', write_view, name='create a new tale'),
     path('read/', read_view, name='read our tales' ),
     path('faq/', faq_view, name='faq' ),
-    path('tales/write', tale_create_view, name='create tale'),
-    path('tales/details.html', tale_lookup_view, name='lookup tale'),
     path('admin/', admin.site.urls),
 ]

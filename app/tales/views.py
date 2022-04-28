@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Tales
-from .forms import TalesForm, RawTaleForm
+from .forms import TalesForm
 
 # Create your views here.
 
@@ -60,16 +60,18 @@ def tale_detail_view(request, id):
         'genre': obj.genre,
         'content': obj.content
     }
-
+    return render(request, 'tales/details.html', context )
     # Short way around, but doesn't work
     # context= {
     #     'object':obj
     # }
-    return render(request, 'tales/details.html', context )
 
-
-
-
+def tale_list_view(request):
+    queryset = Tales.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render (request, 'tales/tale_list.html', context)
 
 
 # def tale_create_view(request):
