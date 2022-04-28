@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include,path
 from pages.views import home_view, about_view, login_view, register_view, write_view, read_view, faq_view
-from tales.views import tale_detail_view, tale_create_view, tale_lookup_view, tale_delete_view, tale_list_view
+
 
 urlpatterns = [
+    path('blog/', include('blog.urls')),
     path('tales/', include('tales.urls')),
     path('', home_view, name='home'),
     path('home/', home_view, name='home'),
