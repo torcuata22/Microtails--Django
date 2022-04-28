@@ -6,6 +6,6 @@ class ArticleModelForm (forms.ModelForm):
         fields = [
             'title',
             'content',
-            'contrinbutor',
+            'contributor',
             'active'
         ]
